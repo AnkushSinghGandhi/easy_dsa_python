@@ -13,7 +13,8 @@ class SinglyLinkedList:
         new_node.next = self.head
         self.head = new_node
 
-    def insert(self, data, index):
+    def insert_at_index(self, data, index):
+        "Method to insert data at a specific index"
         current_index = 0
         current = self.head
         while(current):
@@ -114,7 +115,7 @@ class SinglyLinkedList:
         "Method to check if the linked list is empty or not"
         return self.head is None
 
-    def index(self, index):
+    def get_at_index(self, index):
         "Method to get a node at a given index"
         current_index = 0
         current = self.head
@@ -124,7 +125,7 @@ class SinglyLinkedList:
             current = current.next
             index += 1
 
-    def size(self):
+    def get_size(self):
         "Method to get size of the linked list"
         current = self.head
         size = 0
@@ -138,9 +139,25 @@ class SinglyLinkedList:
         self.head = None
 
     def clone(self):
-        return self
+        "Method to return a deep copy of the linked list"
+        if not self.head:
+            return SinglyLinkedList()
+        
+        new_list = SinglyLinkedList()
+        current = self.head
+        new_list.head = Node(current.data)
+        new_current = new_list.head
 
-    def update(self, data, index):
+        while current.next:
+            current = current.next
+            new_node = Node(current.data)
+            new_current.next = new_node
+            new_current = new_current.next
+
+        return new_list
+
+    def update_at_index(self, data, index):
+        "Method to update the data of a node at a given index"
         current_index = 0
         current = self.head
         while(current):
@@ -149,12 +166,14 @@ class SinglyLinkedList:
             current = current.next
 
     def for_each(self, func):
+        "Method to apply a function to each node's data in the linked list"
         current = self.head
         while(current):
             current.data = func(current.data)
             current = current.next
 
     def traverse(self):
+        "Method to print the linked list"
         current = self.head         # Start from the head
         while current:              # Traverse the list until the end
             print(current.data, end=" -> ") # Print the data of each node
