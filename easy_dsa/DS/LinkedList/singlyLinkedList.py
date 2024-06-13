@@ -172,6 +172,35 @@ class SinglyLinkedList:
             current.data = func(current.data)
             current = current.next
 
+    def has_cycle(self):
+        "Method to detect cycle using Floyd's Tortoise and Hare Algorithm"
+        if not self.head or not self.head.next:
+            return False
+        
+        slow = self.head
+        fast = self.head.next
+        
+        while slow != fast:
+            if not fast or not fast.next:
+                return False
+            slow = slow.next
+            fast = fast.next.next
+        
+        return True
+
+#    def has_cycle(self):
+#         "Method to detect cycle using Hash set approach"
+#        visited = set()
+#        current = self.head
+
+#        while current:
+#            if current in visited:
+#                return True
+#            visited.add(current)
+#            current = current.next
+
+#        return False
+
     def traverse(self):
         "Method to print the linked list"
         current = self.head         # Start from the head
