@@ -61,7 +61,6 @@ class Deque:
         self.count -= 1
         return dequeued_node.data
 
-
     def traverse(self):
         "Method to traverse the queue"
         current = self.front
@@ -82,3 +81,17 @@ class Deque:
         if self.is_empty():
             raise IndexError("front from empty queue")
         return self.front.data
+
+    def clear(self):
+        "Method to clear entire Queue"
+        self.front = self.rear = None
+        self.count = 0
+
+    def contains(self, data):
+        "Method to check if the queue contains the value"
+        current = self.front
+        while(current):
+            if current.data == data:
+                return True
+            current = current.next
+        return False
