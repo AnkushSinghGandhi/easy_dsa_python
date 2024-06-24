@@ -106,11 +106,17 @@ class PriorityDeque:
         "Method to check size of the queue"
         return self.size
 
-    def get_front(self):
+    def peek_front(self):
         "Method to get first node of the queue"
         if self.is_empty():
-            raise IndexError("front from empty queue")
+            raise IndexError("Queue is empty")
         return self.front.data
+
+    def peek_rear(self):
+        "Method to get last node of the queue"
+        if self.is_empty():
+            raise IndexError("Queue is empty")
+        return self.rear.data
 
     def contains(self, data):
         "Method to check if the queue contains the value"

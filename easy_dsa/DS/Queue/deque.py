@@ -76,11 +76,17 @@ class Deque:
         "Method to check size of the queue"
         return self.count
 
-    def get_front(self):
+    def peek_front(self):
         "Method to get first node of the queue"
         if self.is_empty():
-            raise IndexError("front from empty queue")
+            raise IndexError("Queue is empty")
         return self.front.data
+
+    def peek_rear(self):
+        "Method to get last node of the queue"
+        if self.is_empty():
+            raise IndexError("Queue is empty")
+        return self.rear.data
 
     def clear(self):
         "Method to clear entire Queue"
