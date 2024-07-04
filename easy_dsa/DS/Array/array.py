@@ -50,4 +50,24 @@ class Array:
             print(element, end=" ")
         print()
 
-   
+    def linear_search(self, value):
+        "Method to find an element using linear search"
+        for i, element in enumerate(self.elements):
+            if element == value:
+                return i
+        return -1
+
+    def binary_search(self, value):
+        "Method to find an element using binary search"
+        left, right = 0, len(self.elements) - 1
+        while left <= right:
+            mid = (left + right) // 2
+            if self.elements[mid] == value:
+                return mid
+            elif self.elements[mid] < value:
+                left = mid + 1
+            else:
+                right = mid - 1
+        return -1
+
+    
